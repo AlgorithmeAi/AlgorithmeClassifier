@@ -52,53 +52,32 @@ print("AUC     :", clf.score(X_test, y_test, metric="auc"))
 
 This yields fast, interpretable predictions that mirror the **Dana Theorem** construction.
 
----
-
 ## 🧮 Mathematical foundations (Dana Theorem)
 
 **Informal idea**  
-For any finite binary-labeled dataset, you can construct a CNF (SAT) formula that exactly reproduces the labels using at most  
-![formula1](https://latex.codecogs.com/svg.latex?O(mn%5E2))  
-time, where  
-![formula2](https://latex.codecogs.com/svg.latex?m)  
-is the number of features and  
-![formula3](https://latex.codecogs.com/svg.latex?n)  
-the number of samples.
+For any finite binary‑labeled dataset, you can construct a CNF (SAT) formula that exactly reproduces the labels using at most  
+<strong>O( m&nbsp;n<sup>2</sup> )</strong> time, where <strong>m</strong> is the number of features and <strong>n</strong> the number of samples.
 
 ---
 
-**Formal statement (condensed)**  
+**Formal statement (condensed)**
 
-Let  
-![formula4](https://latex.codecogs.com/svg.latex?A%20%5Cin%20%5C%7B0%2C1%5C%7D%5E%7Bn%5Ctimes%20m%7D)  
-be the feature matrix and  
-![formula5](https://latex.codecogs.com/svg.latex?X%20%5Cin%20%5C%7B0%2C1%5C%7D%5En)  
-the label vector.
+Let <strong>A &isin; {0,1}<sup>n&times;m</sup></strong> be the feature matrix and <strong>X &isin; {0,1}<sup>n</sup></strong> the label vector.  
+There exists a CNF <strong>&phi;</strong> with at most <strong>&le; |F|</strong> clauses and <strong>&le; |E|&nbsp;|F|</strong> literals, constructible in <strong>O( m&nbsp;n<sup>2</sup> )</strong> time, such that:  
+<strong>&forall; i,&nbsp;&phi;( A<sub>i,*</sub> ) = X(i)</strong>.
 
-Then there exists a CNF  
-![formula6](https://latex.codecogs.com/svg.latex?%5Cvarphi)  
-with  
-
-![formula7](https://latex.codecogs.com/svg.latex?%5Cleq%20%7CF%7C)  
-clauses and  
-
-![formula8](https://latex.codecogs.com/svg.latex?%5Cleq%20%7CE%7C%7CF%7C)  
-literals, constructible in  
-![formula9](https://latex.codecogs.com/svg.latex?O(mn%5E2))  
-time, such that  
-
-![formula10](https://latex.codecogs.com/svg.latex?%5Cforall%20i%2C%20%5Cquad%20%5Cvarphi(A_%7Bi%2C*%7D)%20%3D%20X(i))  
-
-This classifier implements that **constructive mapping** in practice.
+Here, <strong>E = { i : X(i) = 1 }</strong> and <strong>F = { i : X(i) = 0 }</strong>. A dual DNF statement holds by swapping <em>E</em> and <em>F</em>.
 
 ---
 
 **Why it matters**  
-- The **clause constructor** mirrors the proof’s discriminative step: each literal encodes a feature difference between positive and negative examples.  
-- The algorithm **aggregates these literals** into a CNF per class — yielding a compact, data-backed set of rules.  
-- **Complexity:**  
-  ![formula11](https://latex.codecogs.com/svg.latex?O(m%5Ccdot%7CE%7C%5Ccdot%7CF%7C)%20%5Csubseteq%20O(mn%5E2))  
-- **Interpretability:** every prediction results from the activation of a few **IF–THEN** rules that can be traced back to actual samples.
+- The clause constructor mirrors the proof’s discriminative step: each literal encodes a feature difference between positive and negative examples.  
+- The algorithm aggregates these literals into a CNF per class — yielding a compact, data‑backed set of rules.  
+- **Complexity:** <strong>O( m &middot; |E| &middot; |F| ) &sube; O( m&nbsp;n<sup>2</sup> )</strong>.  
+- **Interpretability:** every prediction results from the activation of a few IF–THEN rules that can be traced back to actual samples.
+
+---
+
 
 ## License
 
