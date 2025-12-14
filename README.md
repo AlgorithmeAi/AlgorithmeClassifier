@@ -54,17 +54,51 @@ This yields fast, interpretable predictions that mirror the **Dana Theorem** con
 
 ---
 
-## Mathematical foundations (Dana Theorem)
+## 🧮 Mathematical foundations (Dana Theorem)
 
-**Informal idea.**  
-For any finite binary-labeled dataset, you can construct a CNF (SAT) formula that exactly reproduces the labels using at most \( O(mn^2) \) time, where \( m \) is the number of features and \( n \) the number of samples.
-
-**Formal statement (condensed).**  
-Let \(A\in\{0,1\}^{n\times m}\) and labels \(X\in\{0,1\}^n\). Then there exists a CNF \(\varphi\) with ≤ \(|F|\) clauses and ≤ \(|E||F|\) literals, constructible in \(O(mn^2)\), such that \(\forall i,\ \varphi(A_{i,*})=X(i)\).
-
-This classifier implements that constructive mapping in practice.
+**Informal idea**  
+For any finite binary-labeled dataset, you can construct a CNF (SAT) formula that exactly reproduces the labels using at most  
+![formula1](https://latex.codecogs.com/svg.latex?O(mn%5E2))  
+time, where  
+![formula2](https://latex.codecogs.com/svg.latex?m)  
+is the number of features and  
+![formula3](https://latex.codecogs.com/svg.latex?n)  
+the number of samples.
 
 ---
+
+**Formal statement (condensed)**  
+
+Let  
+![formula4](https://latex.codecogs.com/svg.latex?A%20%5Cin%20%5C%7B0%2C1%5C%7D%5E%7Bn%5Ctimes%20m%7D)  
+be the feature matrix and  
+![formula5](https://latex.codecogs.com/svg.latex?X%20%5Cin%20%5C%7B0%2C1%5C%7D%5En)  
+the label vector.
+
+Then there exists a CNF  
+![formula6](https://latex.codecogs.com/svg.latex?%5Cvarphi)  
+with  
+
+![formula7](https://latex.codecogs.com/svg.latex?%5Cleq%20%7CF%7C)  
+clauses and  
+
+![formula8](https://latex.codecogs.com/svg.latex?%5Cleq%20%7CE%7C%7CF%7C)  
+literals, constructible in  
+![formula9](https://latex.codecogs.com/svg.latex?O(mn%5E2))  
+time, such that  
+
+![formula10](https://latex.codecogs.com/svg.latex?%5Cforall%20i%2C%20%5Cquad%20%5Cvarphi(A_%7Bi%2C*%7D)%20%3D%20X(i))  
+
+This classifier implements that **constructive mapping** in practice.
+
+---
+
+**Why it matters**  
+- The **clause constructor** mirrors the proof’s discriminative step: each literal encodes a feature difference between positive and negative examples.  
+- The algorithm **aggregates these literals** into a CNF per class — yielding a compact, data-backed set of rules.  
+- **Complexity:**  
+  ![formula11](https://latex.codecogs.com/svg.latex?O(m%5Ccdot%7CE%7C%5Ccdot%7CF%7C)%20%5Csubseteq%20O(mn%5E2))  
+- **Interpretability:** every prediction results from the activation of a few **IF–THEN** rules that can be traced back to actual samples.
 
 ## License
 
