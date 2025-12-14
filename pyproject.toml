@@ -1,0 +1,26 @@
+[build-system]
+requires = ["hatchling>=1.18"]
+build-backend = "hatchling.build"
+
+[project]
+name = "algorithmeclassifier"
+version = "0.1.0"
+description = "Minimalist, interpretable SAT-clause-based classifier."
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [{ name = "Algorithme.ai" }]
+dependencies = [
+    "numpy>=1.22",
+    "pandas>=1.5",
+    "scikit-learn>=1.1",
+]
+
+[project.urls]
+Homepage = "https://github.com/your-org/AlgorithmeClassifier"
+Repository = "https://github.com/your-org/AlgorithmeClassifier"
+Documentation = "https://github.com/your-org/AlgorithmeClassifier#readme"
+
+[tool.pytest.ini_options]
+addopts = "-q"
+pythonpath = ["."]
