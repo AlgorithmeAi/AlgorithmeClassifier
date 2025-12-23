@@ -1,0 +1,119 @@
+============================================================
+🏥 BENCHMARK: Breast Cancer Wisconsin Dataset
+============================================================
+
+📥 Chargement du Breast Cancer dataset...
+   ✓ Dataset chargé: 569 samples
+   • Features: 30 (cell nuclei measurements)
+   • Classes: 2 (0=Malignant, 1=Benign)
+   • Distribution: {0: 212, 1: 357}
+   • Balance: 62.7% benign
+
+✂️  Split: 400 train, reste en test...
+   • Train: 400 samples
+   • Test:  169 samples
+   • Train distribution: {0: 149, 1: 251}
+   • Test distribution: {0: 63, 1: 106}
+
+============================================================
+🔬 Benchmark: Random Forest
+============================================================
+⏳ Entraînement...
+   ✓ Entraînement: 0.057s
+⏳ Prédiction...
+   ✓ Prédiction: 0.003s
+
+📊 Résultats:
+   • Accuracy:    0.9408
+   • AUC:         0.9924 🏆
+   • F1 Score:    0.9533
+   • Precision:   0.9444
+   • Recall:      0.9623
+   • Specificity: 0.9048
+
+📈 Matrice de confusion:
+   • True Negatives:    57  (correctly identified benign)
+   • False Positives:    6  (benign predicted as malignant)
+   • False Negatives:    4  (malignant missed - critical!)
+   • True Positives:   102  (correctly identified malignant)
+
+============================================================
+🔬 Benchmark: Gradient Boosting
+============================================================
+⏳ Entraînement...
+   ✓ Entraînement: 0.172s
+⏳ Prédiction...
+   ✓ Prédiction: 0.000s
+
+📊 Résultats:
+   • Accuracy:    0.9467
+   • AUC:         0.9897 🏆
+   • F1 Score:    0.9585
+   • Precision:   0.9369
+   • Recall:      0.9811
+   • Specificity: 0.8889
+
+📈 Matrice de confusion:
+   • True Negatives:    56  (correctly identified benign)
+   • False Positives:    7  (benign predicted as malignant)
+   • False Negatives:    2  (malignant missed - critical!)
+   • True Positives:   104  (correctly identified malignant)
+
+============================================================
+🔬 Benchmark: AlgorithmeClassifier
+============================================================
+⏳ Entraînement...
+   ✓ Entraînement: 0.496s
+⏳ Prédiction...
+   ✓ Prédiction: 0.362s
+
+📊 Résultats:
+   • Accuracy:    0.9527
+   • AUC:         0.9955 🏆
+   • F1 Score:    0.9630
+   • Precision:   0.9455
+   • Recall:      0.9811
+   • Specificity: 0.9048
+
+📈 Matrice de confusion:
+   • True Negatives:    57  (correctly identified benign)
+   • False Positives:    6  (benign predicted as malignant)
+   • False Negatives:    2  (malignant missed - critical!)
+   • True Positives:   104  (correctly identified malignant)
+
+============================================================
+📊 TABLEAU COMPARATIF FINAL
+============================================================
+
+               model  accuracy    auc     f1  precision  recall  specificity  false_neg  train_time_sec  pred_time_sec
+       Random Forest    0.9408 0.9924 0.9533     0.9444  0.9623       0.9048          4           0.057          0.003
+   Gradient Boosting    0.9467 0.9897 0.9585     0.9369  0.9811       0.8889          2           0.172          0.000
+AlgorithmeClassifier    0.9527 0.9955 0.9630     0.9455  0.9811       0.9048          2           0.496          0.362
+
+🏆 Gagnants par métrique:
+   • accuracy    : AlgorithmeClassifier      (0.9527)
+   • auc         : AlgorithmeClassifier      (0.9955)
+   • f1          : AlgorithmeClassifier      (0.9630)
+   • precision   : AlgorithmeClassifier      (0.9455)
+   • recall      : Gradient Boosting         (0.9811)
+   • specificity : Random Forest             (0.9048)
+
+🚨 Métrique critique (False Negatives - cancers manqués):
+   • Random Forest            :  4 cancers manqués (3.8% miss rate)
+   • Gradient Boosting        :  2 cancers manqués (1.9% miss rate)
+   • AlgorithmeClassifier     :  2 cancers manqués (1.9% miss rate)
+
+⚡ Efficacité computationnelle:
+   • Random Forest            : 0.060s total (train: 0.057s, pred: 0.003s)
+   • Gradient Boosting        : 0.172s total (train: 0.172s, pred: 0.000s)
+   • AlgorithmeClassifier     : 0.858s total (train: 0.496s, pred: 0.362s)
+
+💾 Résultats sauvegardés dans 'benchmark_breast_cancer_results.csv'
+
+============================================================
+✅ Benchmark terminé!
+============================================================
+
+💡 Recommandation pour diagnostic médical:
+   AlgorithmeClassifier avec AUC=0.9955 offre la meilleure
+   discrimination pour identifier les cas malignants.
