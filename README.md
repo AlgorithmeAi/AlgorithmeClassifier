@@ -26,12 +26,16 @@ AlgorithmeClassifier has been tested on multiple standard datasets, consistently
 
 ### 🎯 Summary: AlgorithmeClassifier wins on discrimination
 
-| Dataset | AlgorithmeClassifier AUC | Best Competitor AUC | Advantage |
-|---------|--------------------------|---------------------|-----------|
-| **Digits** (10 classes, balanced) | **0.9987** 🥇 | 0.9985 (RF) | **+0.0002** |
-| **Wine Quality** (7 classes, imbalanced) | **0.7106** 🥇 | 0.6728 (RF) | **+0.0378** (+5.6%) |
+| Dataset | Type | AlgorithmeClassifier AUC | Best Competitor AUC | Advantage |
+|---------|------|--------------------------|---------------------|-----------|
+| **Breast Cancer** (binary, medical) | 🏥 High-stakes | **0.9955** 🥇 | 0.9924 (RF) | **+0.0031** (+0.31%) |
+| **Digits** (10 classes, balanced) | 🎯 Easy | **0.9987** 🥇 | 0.9985 (RF) | **+0.0002** (+0.02%) |
+| **Wine Quality** (7 classes, imbalanced) | 🍷 Hard | **0.7106** 🥇 | 0.6728 (RF) | **+0.0378** (+5.6%) |
 
-**Key Insight**: The advantage is **most pronounced on difficult, imbalanced datasets** where discrimination matters most.
+**Key Insights**: 
+- 🏆 **Wins on AUC across all 3 datasets** (binary, balanced multiclass, imbalanced multiclass)
+- 📈 **Advantage scales with difficulty**: Easy (+0.02%) → Medical (+0.31%) → Hard (+5.6%)
+- 🎯 **Consistent excellence**: Best overall accuracy on 2/3 benchmarks, best F1 on all 3
 
 ---
 
@@ -176,6 +180,12 @@ AlgorithmeClassifier/
 ├── Digits/                     # Benchmark on sklearn Digits dataset
 │   ├── benchmark_digits.py    # Benchmark script
 │   └── benchmark_results.txt  # Full results
+├── Wine/                     # Benchmark on sklearn Wine dataset
+│   ├── wine.py                # Benchmark script
+│   └── wine_results.txt        # Full results
+├── Breast/                     # Benchmark on sklearn Breast Cancer dataset
+│   ├── breast.py                # Benchmark script
+│   └── breast_results.txt        # Full results
 ├── Kaggle Starter Pack/        # Quick-start templates
 ├── README.md                   # This file
 ├── LICENSE                     # MIT License
