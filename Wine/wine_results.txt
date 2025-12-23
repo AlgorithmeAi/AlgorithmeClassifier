@@ -1,0 +1,97 @@
+============================================================
+🍷 BENCHMARK: Wine Quality Dataset (Multiclass Classification)
+============================================================
+📥 Téléchargement du Wine Quality dataset...
+   ✓ Dataset chargé: 6497 samples
+   • Features: 12
+   • Classes: 7 (quality scores)
+   • Distribution: {0: 30, 1: 216, 2: 2138, 3: 2836, 4: 1079, 5: 193, 6: 5}
+
+✂️  Split: 1000 train, reste en test...
+   • Train: 1000 samples
+   • Test:  5497 samples
+   • Train distribution: {0: 5, 1: 33, 2: 329, 3: 436, 4: 166, 5: 30, 6: 1}
+   • Test distribution: {0: 25, 1: 183, 2: 1809, 3: 2400, 4: 913, 5: 163, 6: 4}
+
+============================================================
+🔬 Benchmark: Random Forest
+============================================================
+⏳ Entraînement...
+   ✓ Entraînement: 0.111s
+⏳ Prédiction...
+   ✓ Prédiction: 0.046s
+
+📊 Résultats:
+   • Accuracy:        0.5719
+   • Log Loss:        1.1156
+   • AUC (OvR):       0.6728
+   • F1 Macro:        0.2701
+   • F1 Weighted:     0.5498
+   • Precision Macro: 0.3987
+   • Recall Macro:    0.2571
+
+📈 Matrice de confusion (diagonale): [0, 2, 1135, 1676, 311, 20, 0]
+
+============================================================
+🔬 Benchmark: Gradient Boosting
+============================================================
+⏳ Entraînement...
+   ✓ Entraînement: 0.773s
+⏳ Prédiction...
+   ✓ Prédiction: 0.047s
+
+📊 Résultats:
+   • Accuracy:        0.5514
+   • Log Loss:        1.1873
+   • AUC (OvR):       0.6321
+   • F1 Macro:        0.2826
+   • F1 Weighted:     0.5385
+   • Precision Macro: 0.3339
+   • Recall Macro:    0.2673
+
+📈 Matrice de confusion (diagonale): [0, 21, 1168, 1500, 320, 22, 0]
+
+============================================================
+🔬 Benchmark: AlgorithmeClassifier
+============================================================
+⏳ Entraînement...
+   ✓ Entraînement: 11.730s
+⏳ Prédiction...
+   ✓ Prédiction: 7.410s
+
+📊 Résultats:
+   • Accuracy:        0.5780
+   • Log Loss:        1.1912
+   • AUC (OvR):       0.7106
+   • F1 Macro:        0.2764
+   • F1 Weighted:     0.5560
+   • Precision Macro: 0.4588
+   • Recall Macro:    0.2619
+
+📈 Matrice de confusion (diagonale): [0, 3, 1164, 1671, 318, 21, 0]
+
+============================================================
+📊 TABLEAU COMPARATIF FINAL
+============================================================
+
+               model  train_time_sec  pred_time_sec  accuracy  log_loss  auc_ovr  f1_macro  f1_weighted  precision_macro  recall_macro
+       Random Forest           0.111          0.046    0.5719    1.1156   0.6728    0.2701       0.5498           0.3987        0.2571
+   Gradient Boosting           0.773          0.047    0.5514    1.1873   0.6321    0.2826       0.5385           0.3339        0.2673
+AlgorithmeClassifier          11.730          7.410    0.5780    1.1912   0.7106    0.2764       0.5560           0.4588        0.2619
+
+🏆 Gagnants par métrique:
+   • accuracy            : AlgorithmeClassifier      (0.5780)
+   • auc_ovr             : AlgorithmeClassifier      (0.7106)
+   • f1_macro            : Gradient Boosting         (0.2826)
+   • f1_weighted         : AlgorithmeClassifier      (0.5560)
+
+⚡ Efficacité computationnelle:
+   • Random Forest            : 0.157s total (train: 0.111s, pred: 0.046s)
+   • Gradient Boosting        : 0.820s total (train: 0.773s, pred: 0.047s)
+   • AlgorithmeClassifier     : 19.140s total (train: 11.730s, pred: 7.410s)
+
+💾 Résultats sauvegardés dans 'benchmark_wine_results.csv'
+
+============================================================
+✅ Benchmark terminé!
+============================================================
