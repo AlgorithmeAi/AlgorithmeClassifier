@@ -76,6 +76,25 @@ AlgorithmeClassifier has been tested on multiple standard datasets, consistently
 
 ---
 
+### Benchmark 3: Breast Cancer Dataset (Binary, Medical High-Stakes)
+
+**Dataset**: Wisconsin Breast Cancer (Diagnostic) — 2 classes, 30 features, 400 train / 169 test  
+**Challenge**: Medical diagnosis where False Negatives = missed cancers (critical!)
+
+| Model | Accuracy | **AUC** | F1 | Precision | Recall | **False Negatives** | Train+Inference |
+|-------|----------|---------|----|-----------|---------|--------------------|-----------------|
+| **AlgorithmeClassifier** | **0.9527** 🥇 | **0.9955** 🏆 | **0.9630** 🥇 | **0.9455** 🥇 | 0.9811 | **2** 🥇 | 0.86s |
+| Gradient Boosting | 0.9467 | 0.9897 | 0.9585 | 0.9369 | **0.9811** 🥇 | **2** 🥇 | 0.17s |
+| Random Forest | 0.9408 | 0.9924 | 0.9533 | 0.9444 | 0.9623 | 4 | 0.06s |
+
+**Takeaways:**
+- 🏆 **Highest AUC** (0.9955) — best discrimination for cancer detection
+- 🥇 **Best accuracy** (95.27%) and F1 (0.9630) — overall superior performance
+- 🏥 **Tied lowest False Negatives** (2/106 cancers missed = 1.9% miss rate)
+- 💡 **Medical recommendation**: Best model for identifying malignant cases
+
+---
+
 ### 📈 When AlgorithmeClassifier Excels
 
 ✅ **Imbalanced datasets** — The discrete concordance mechanism naturally handles class imbalance better than tree ensembles  
@@ -88,7 +107,7 @@ AlgorithmeClassifier has been tested on multiple standard datasets, consistently
 - Very large datasets (> 100k samples) where speed dominates
 - Simple balanced problems where RF is already near-optimal
 
-See full benchmark details in [`Digits/`](Digits/) and [`Wine/`](Wine/) folders.
+See full benchmark details in [`Digits/`](Digits/), [`Wine/`](Wine/), and [`BreastCancer/`](BreastCancer/) folders.
 
 ---
 
