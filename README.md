@@ -95,21 +95,6 @@ AlgorithmeClassifier has been tested on multiple standard datasets, consistently
 
 ---
 
-Here is the complete, high-impact README.md content in English, following the professional and analytical style you requested. It integrates all benchmarks (4 to 8) with the insights derived from your results.
-
-Markdown
-
-# AlgorithmeClassifier
-
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
-
-🐍 **AlgorithmeClassifier** — A minimalist, interpretable Python classifier that builds discriminative SAT-style clauses to separate classes and converts them into finely calibrated class probabilities.
-
-Based on the **Dana Theorem** for discrete concordance, this classifier achieves state-of-the-art performance on multiclass problems while maintaining theoretical guarantees on AUROC convergence.
-
----
-
 ## 📊 Extended Benchmarks (4 to 8)
 
 The following benchmarks evaluate the model's performance on high-dimensional, imbalanced, and noisy datasets compared to industry standards: **Random Forest (RF)** and **Histogram-based Gradient Boosting (Hist-GBM)**.
