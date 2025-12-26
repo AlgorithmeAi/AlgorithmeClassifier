@@ -7,6 +7,8 @@
 
 Based on the **Dana Theorem** for discrete concordance, this classifier achieves state-of-the-art performance on multiclass problems while maintaining theoretical guarantees on AUROC convergence.
 
+Note: It is super useful on Small training datasets.
+
 ---
 
 ## 🔥 Key Features
