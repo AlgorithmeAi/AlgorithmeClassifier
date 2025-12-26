@@ -6,6 +6,7 @@ from sklearn.datasets import load_digits
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score, classification_report
 from multiprocessing import Pool, cpu_count
+from sklearn.base import BaseEstimator, ClassifierMixin
 
 def to_numpy_matrix(x):
     if isinstance(x, pd.DataFrame):
@@ -247,8 +248,8 @@ def _parallel_construct_sat_with_layer(args):
     return (layer_idx, target_label, sat)
 
 
-class FastAlgorithmeClassifier:
-    def __init__(self, n_layers=100, vocal=True, n_jobs=-1):
+class FastAlgorithmeClassifier(BaseEstimator, ClassifierMixin):
+    def __init__(self, n_layers=100, vocal=False, n_jobs=-1):
         self.log = """
 ################################################################
 #                                                              #
@@ -258,6 +259,7 @@ class FastAlgorithmeClassifier:
 #                                                              #
 ################################################################        
 """
+        self.n_layers = n_layers
         self.layers = n_layers
         self.vocal = vocal
         self.n_jobs = n_jobs if n_jobs > 0 else cpu_count()
@@ -395,7 +397,18 @@ class FastAlgorithmeClassifier:
 
     def predict(self, X_test):
         return np.argmax(self.predict_proba(X_test), axis=1)
-
+    
+    def score(self, X, y, metric="accuracy"):
+        proba = self.predict_proba(X)
+        y_pred = np.argmax(proba, axis=1)
+        if metric == "accuracy":
+            return accuracy_score(y, y_pred)
+        elif metric == "log_loss":
+            return -log_loss(y, proba)
+        elif metric == "auc":
+            return roc_auc_score(y, proba, multi_class="ovr")
+        else:
+            raise ValueError(f"Unsupported metric: {metric}")
 
 if __name__ == "__main__":
     # Load Digits

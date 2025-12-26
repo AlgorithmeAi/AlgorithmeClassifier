@@ -1,0 +1,26 @@
+Dataset              | Model              | Acc      | F1       | Time    
+---------------------------------------------------------------------------
+Breast Cancer        | 🐍 Snake            | 0.9737 | 0.9719 | 1.78s
+Breast Cancer        | 🌲 Random Forest    | 0.9649 | 0.9623 | 0.07s
+Breast Cancer        | 🔥 Grad. Boosting   | 0.9737 | 0.9719 | 0.53s
+Breast Cancer        | 📈 Log. Regression  | 0.9737 | 0.9719 | 0.00s
+Breast Cancer        | 📏 Lin. Classifier  | 0.9649 | 0.9623 | 0.00s
+Wine                 | 🐍 Snake            | 1.0000 | 1.0000 | 1.67s
+Wine                 | 🌲 Random Forest    | 1.0000 | 1.0000 | 0.04s
+Wine                 | 🔥 Grad. Boosting   | 0.9722 | 0.9663 | 0.36s
+Wine                 | 📈 Log. Regression  | 1.0000 | 1.0000 | 0.00s
+Wine                 | 📏 Lin. Classifier  | 1.0000 | 1.0000 | 0.00s
+Synthetic (10k)      | 🐍 Snake            | 0.9535 | 0.9535 | 30.76s
+Synthetic (10k)      | 🌲 Random Forest    | 0.9395 | 0.9395 | 1.50s
+Synthetic (10k)      | 🔥 Grad. Boosting   | 0.9500 | 0.9500 | 0.91s
+Synthetic (10k)      | 📈 Log. Regression  | 0.8055 | 0.8054 | 0.00s
+Synthetic (10k)      | 📏 Lin. Classifier  | 0.8020 | 0.8018 | 0.00s
+
+🏆 RÉSUMÉ DES PERFORMANCES :
+                   Accuracy        F1       Time
+Model                                           
+🐍 Snake            0.975728  0.975121  11.400780
+🌲 Random Forest    0.968137  0.967267   0.534987
+🔥 Grad. Boosting   0.965302  0.962715   0.599458
+📈 Log. Regression  0.926395  0.925758   0.001720
+📏 Lin. Classifier  0.922304  0.921362   0.001689
